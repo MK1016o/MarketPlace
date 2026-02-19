@@ -13,7 +13,7 @@ const Favorites = () => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/products/favorites/me",
+        `${import.meta.env.VITE_BACKEND_URL}/products/favorites/me`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

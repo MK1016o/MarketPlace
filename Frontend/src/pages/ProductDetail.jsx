@@ -15,7 +15,7 @@ const ProductDetail = () => {
   const fetchProduct = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/products/${id}`
+        `${import.meta.env.VITE_BACKEND_URL}/products/${id}`
       );
 
       if (!response.ok) {
@@ -37,7 +37,7 @@ const ProductDetail = () => {
       if (!token) return;
 
       const response = await fetch(
-        "http://localhost:5000/products/favorites/me",
+        `${import.meta.env.VITE_BACKEND_URL}/products/favorites/me`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -65,7 +65,7 @@ const ProductDetail = () => {
 
       if (!isFavorited) {
         await fetch(
-          `http://localhost:5000/products/${id}/favorite`,
+          `${import.meta.env.VITE_BACKEND_URL}/products/${id}/favorite`,
           {
             method: "POST",
             headers: {
@@ -78,7 +78,7 @@ const ProductDetail = () => {
         alert("Added to favorites ❤️");
       } else {
         await fetch(
-          `http://localhost:5000/products/${id}/favorite`,
+          `${import.meta.env.VITE_BACKEND_URL}/products/${id}/favorite`,
           {
             method: "DELETE",
             headers: {
